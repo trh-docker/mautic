@@ -2,10 +2,10 @@ FROM quay.io/spivegin/php7:7.1.3
 
 ADD files/Caddy/Caddyfile /opt/caddy/
 ADD files/php/ /etc/php/7.0/fpm/pool.d/
-
 WORKDIR /opt/tlm/html
+ADD https://github.com/mautic/mautic/releases/download/3.0.0/3.0.0.zip /opt/tlm/html/
 
-RUN git clone https://github.com/mautic/mautic.git . &&\
+RUN unzip 3.0.0.zip  &&\
     chown -R www-data:www-data .
 
 EXPOSE 80
